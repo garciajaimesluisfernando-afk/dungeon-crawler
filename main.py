@@ -1,13 +1,17 @@
 import pygame
 from player import Jugador
+from player import Enemigo
 
 pygame.init()
 screen = pygame.display.set_mode((1082,720))
 mi_Rect = pygame.Rect(1052, 690, 20, 20)
+enemigo_Rect = pygame.Rect(20,20,20,20)
 velocidad = 5
+velocidad_enemigo = 2 
 clock = pygame.time.Clock()
 running = True
 mijugador = Jugador("Juan",mi_Rect,velocidad, 'black')
+enemigo1 = Enemigo("malo",enemigo_Rect, velocidad_enemigo, 'blue' )
 
 
 while running:
@@ -20,6 +24,7 @@ while running:
             
     
     mijugador.caminar(keys)
+    enemigo1.perseguir(mijugador)
     
         
             
@@ -27,6 +32,7 @@ while running:
         
     
     mijugador.dibujar(screen)
+    enemigo1.dibujar(screen)
     
     pygame.display.flip()
     

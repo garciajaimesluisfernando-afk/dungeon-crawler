@@ -36,4 +36,22 @@ class Jugador:
             
     def dibujar(self, screen):
         pygame.draw.rect(screen,'black', self.rect)
-         
+        
+class Enemigo(Jugador):
+        def __init__(self, nombre, rect, velocidad, color):
+                super().__init__(nombre, rect, velocidad, color)
+                
+                
+        def perseguir(self, jugador):
+                
+                if jugador.rect.x > self.rect.x:
+                        self.rect.x += self.velocidad
+                        
+                if jugador.rect.x < self.rect.x:
+                        self.rect.x -= self.velocidad
+                        
+                if jugador.rect.y >  self.rect.y:
+                        self.rect.y += self.velocidad
+                        
+                if jugador.rect.y < self.rect.y:
+                        self.rect.y -= self.velocidad
