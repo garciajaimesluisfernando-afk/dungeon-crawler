@@ -25,6 +25,7 @@ while running:
     
     mijugador.caminar(keys)
     enemigo1.perseguir(mijugador)
+    mijugador.revisar_colision(enemigo1)
     
         
             

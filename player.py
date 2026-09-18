@@ -6,6 +6,7 @@ class Jugador:
         self.rect = rect
         self.velocidad = velocidad
         self.color = color
+        self.vida = 100
         
         
     def caminar(self, keys):
@@ -37,9 +38,15 @@ class Jugador:
     def dibujar(self, screen):
         pygame.draw.rect(screen,'black', self.rect)
         
+        
+    def revisar_colision(self, enemigo):
+            if self.rect.colliderect(enemigo.rect):
+                    self.vida -= enemigo.demage
+        
 class Enemigo(Jugador):
         def __init__(self, nombre, rect, velocidad, color):
                 super().__init__(nombre, rect, velocidad, color)
+                self.demage = 5
                 
                 
         def perseguir(self, jugador):
